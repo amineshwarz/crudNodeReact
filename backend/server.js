@@ -16,11 +16,15 @@ const corsOptions = {    // Define CORS options
     credentials: true,                              // allow cookies to be sent with requests
 };
 
+app.use(cors(corsOptions))
+
+
 const database = mysql.createConnection({           // Create a MySQL connection
     host: 'localhost',
     user: 'root',
-    password: '',
-    database: 'crudnode'
+    password: 'root',
+    database: 'crudnode',
+    // port: 8889
 })
 
 
@@ -28,10 +32,15 @@ app.get("/", (req,res)=>{                           // Define a GET route for th
     //res.json("Hello this is the backend");        // Send a JSON response
     const sql = "SELECT * FROM student ";            // SQL query to select all users
     database.query(sql, (err, data) => {            // Execute the SQL query
-        if(err) return res.json("Error");           // Handle errors
-        return res.json(data);                      // Send the query result as a JSON response
+        if(err) { 
+            console.error('Erreur MySQL:', err);  // Log any errors to the console
+            return res.status(500).json({ message: "Erreur SQL", error: err }); // Renvoie le détail au client      
+        }
+        return res.json(data);            // Send the query result as a JSON response
     })
 })
+
+
 
 
 
