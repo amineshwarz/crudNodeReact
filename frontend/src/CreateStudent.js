@@ -2,7 +2,7 @@ import {useState}from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom';
 
-
+// ---------------- CreateStudent Component ----------------
 const CreateStudent = () => {
 
     const [name, setName] = useState("");
