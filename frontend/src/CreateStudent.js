@@ -9,6 +9,8 @@ const CreateStudent = () => {
     const [email, setEmail] = useState("");
     const navigate = useNavigate();
 
+// ------------------- fonction pour créer un étudiant -------------------
+
     function handleSubmit(e){
         e.preventDefault();
         axios.post("http://localhost:8081/create", {
@@ -20,8 +22,7 @@ const CreateStudent = () => {
         navigate('/')
     }
 
-
-
+// ------------------- Render the component -------------------
   return (
    
     <div className='d-flex vh-100 bg primary justify-content-center align-items-center'>

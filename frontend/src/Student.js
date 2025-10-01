@@ -4,8 +4,9 @@ import { Link } from 'react-router-dom';
 
 const Student = ()=> {
 
-    const [student, setStudent] = useState([])
+    const [student, setStudent] = useState([]) // State to hold the list of students
 
+    // ------------------- fonction pour supprimer un étudiant -------------------
     const handleDelete = async (id) => {
         try {
             // await axios.delete(`http://localhost:8081/delete/${id}`);
@@ -16,6 +17,7 @@ const Student = ()=> {
         }
     }
 
+    // ------------------- useEffect pour récupérer les étudiants au chargement du composant -------------------
     useEffect(() => {
         axios.get("http://localhost:8081/")
         
@@ -24,7 +26,7 @@ const Student = ()=> {
     }, [])
 
 
-
+    // ------------------- Render the component -------------------
   return (
     <div>
        <h1>Student Component</h1>

@@ -31,7 +31,7 @@ const UpdateStudent = () => {
         }).catch(err => console.log(err)) 
     }
 
-    
+    // ------------------- Render the component -------------------
   return (
     <div className='d-flex vh-100 bg primary justify-content-center align-items-center'>
         <div className='w-50 bg-white shadow p3 rounded'>
