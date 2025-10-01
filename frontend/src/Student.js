@@ -1,6 +1,6 @@
 import axios from 'axios'
 import {useEffect, useState} from 'react'
-
+import { Link } from 'react-router-dom';
 
 const Student = ()=> {
 
@@ -17,6 +17,7 @@ const Student = ()=> {
   return (
     <div>
        <h1>Student Component</h1>
+       <Link to="/create" className='btn btn-primary'>Ajouter</Link>
        <table className='table table-bordered'>
             <thead>
                 <tr>
@@ -31,10 +32,12 @@ const Student = ()=> {
                             <td>{data.name}</td>
                             <td>{data.email}</td>
                             <td>
-                                <Link to="/create" className='btn btn-primary'>Ajouter</Link>
+                                
                                 <button className='btn btn-danger'>Delete</button>
                             </td>
+                            
                         </tr>
+                        
                     ))
                 }
 

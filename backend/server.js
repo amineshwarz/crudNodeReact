@@ -18,6 +18,9 @@ const corsOptions = {    // Define CORS options
 
 app.use(cors(corsOptions))
 
+app.use(express.json())                  // Middleware to parse JSON request bodies
+// app.use(cors())                     // Enable CORS for all routes
+
 
 const database = mysql.createConnection({           // Create a MySQL connection
     host: 'localhost',
@@ -40,6 +43,20 @@ app.get("/", (req,res)=>{                           // Define a GET route for th
     })
 })
 
+app.post("/create", (req,res)=>{                     // Define a POST route for creating a new user
+    const sql = "INSERT INTO student (`name`, `email`) VALUES (?)"; // SQL query to insert a new user
+    const values = [                                 // Values to be inserted
+        req.body.name,
+        req.body.email
+    ];
+    database.query(sql, [values], (err, data) => {  // Execute the SQL query
+        if(err) { 
+            console.error('Erreur MySQL:', err);  // Log any errors to the console
+            return res.status(500).json({ message: "Erreur SQL", error: err }); // Renvoie le détail au client      
+        }
+        return res.json(data);           // Send a success message as a JSON response
+    })
+})
 
 
 
