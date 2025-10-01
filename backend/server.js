@@ -24,7 +24,7 @@ const database = mysql.createConnection({           // Create a MySQL connection
     user: 'root',
     password: 'root',
     database: 'crudnode',
-    // port: 8889
+    port: 8889
 })
 
 
