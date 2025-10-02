@@ -2,10 +2,12 @@ const express = require ('express');    // Import Express framework
 const cors = require('cors');           // Import CORS middleware
 const mysql = require('mysql');         // Import MySQL library
 
-const app = express();                  // Create an Express application
 
+// --------------------- Create an Express application --------------------- 
+const app = express();                  
 
-const corsOptions = {    // Define CORS options
+// --------------------- CORS Configuration ---------------------
+const corsOptions = { 
     origin: [
         'http://localhost:8889', 
         'http://localhost:3000' 
@@ -15,12 +17,14 @@ const corsOptions = {    // Define CORS options
     headers: 'Content-type,Authorization',          // Allowed headers 
     credentials: true,                              // allow cookies to be sent with requests
 };
-
+// --------------------- Use CORS middleware with the defined options ---------------------
 app.use(cors(corsOptions))
 
+// --------------------- Middleware to parse JSON request bodies ---------------------
 app.use(express.json())                  // Middleware to parse JSON request bodies
-// app.use(cors())                     // Enable CORS for all routes
 
+
+// --------------------- MySQL Database Connection ------------------------------------------ 
 
 const database = mysql.createConnection({           // Create a MySQL connection
     host: 'localhost',
